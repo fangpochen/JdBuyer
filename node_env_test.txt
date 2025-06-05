@@ -1,0 +1,14 @@
+typeof window: undefined
+typeof document: undefined
+typeof navigator: object
+typeof location: undefined
+typeof localStorage: undefined
+typeof XMLHttpRequest: undefined
+typeof Element: undefined
+typeof HTMLElement: undefined
+window === globalThis: ERROR - window is not defined
+document.createElement: ERROR - document is not defined
+document.querySelector: ERROR - document is not defined
+navigator.userAgent: Node.js/22
+location.href: ERROR - location is not defined
+screen.width: ERROR - screen is not defined
