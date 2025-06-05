@@ -36,6 +36,14 @@ function Window() {}
 
 function Document() {}
 
+function HTMLScriptElement() {
+    this.tagName = "SCRIPT"
+    this.parentNode = {
+        removeChild: function(args) {
+            console.log("对象 => document.createElement.parentNode, 方法 => removeChild, 移除元素: ", args)
+        }
+    }
+}
 
 Object.defineProperty(Document.prototype, 'createElement', {
     configurable: true,
@@ -43,6 +51,10 @@ Object.defineProperty(Document.prototype, 'createElement', {
     writable: true,
     value: function createElement(tagName) {
         console.log("对象 => document, 方法 => createElement, 创建元素: ", tagName)
+        if (tagName === "script") {
+            scr = watch(new HTMLScriptElement(), "script")
+            return scr
+        }
     }
 })
 
