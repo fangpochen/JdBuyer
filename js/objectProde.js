@@ -42,7 +42,7 @@ Object.defineProperty(Document.prototype, 'createElement', {
     enumerable: true,
     writable: true,
     value: function createElement(tagName) {
-        console.log("对象 => document, 方法:createElement, 创建元素: " + tagName.toString())
+        console.log("对象 => document, 方法 => createElement, 创建元素: ", tagName)
     }
 })
 
