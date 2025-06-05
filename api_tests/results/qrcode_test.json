@@ -1,0 +1,14 @@
+{
+  "interface": "获取登录二维码",
+  "url": "https://qr.m.jd.com/show",
+  "method": "GET",
+  "parameters": {
+    "appid": 133,
+    "size": 147,
+    "t": "动态时间戳"
+  },
+  "success": true,
+  "qr_size": 776,
+  "is_png": true,
+  "timestamp": "当前时间"
+}

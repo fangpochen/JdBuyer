@@ -149,31 +149,108 @@ class Session(object):
     ############## 商品方法 #############
     # 获取商品详情信息
     def getItemDetail(self, skuId, skuNum=1, areaId=1):
-        """ 查询商品详情
+        """ 查询商品详情 - 新版接口
         :param skuId
         :return 商品信息（下单模式、库存）
         """
-        url = 'https://item-soa.jd.com/getWareBusiness'
-        payload = {
-            'skuId': skuId,
-            'area': areaId,
-            'num': skuNum
+        # 新版接口URL
+        url = 'https://api.m.jd.com/'
+        
+        # 构建body参数（JSON字符串）
+        body_data = {
+            "skuId": str(skuId),
+            "cat": "",  # 分类信息，可以为空
+            "area": str(areaId) if isinstance(areaId, int) else str(areaId),  # 地区ID
+            "shopId": "",  # 店铺ID，可以为空
+            "venderId": "",  # 商家ID，可以为空
+            "paramJson": json.dumps({"platform2": "1", "colType": 100}),
+            "num": skuNum,
+            "bbTraffic": "",
+            "canvasType": 1,
+            "giftServiceIsSelected": "",
+            "customInfoId": "0"
         }
-        resp = requests.get(url=url, params=payload, headers=self.headers)
-        return resp
+        
+        payload = {
+            'appid': 'pc-item-soa',
+            'functionId': 'pc_detailpage_wareBusiness',
+            'client': 'pc',
+            'clientVersion': '1.0.0',
+            't': str(int(time.time() * 1000)),
+            'body': json.dumps(body_data, separators=(',', ':')),  # 压缩JSON
+            'loginType': '3',
+            'scval': str(skuId),  # 商品ID作为scval参数
+        }
+        
+        headers = {
+            'User-Agent': self.userAgent,
+            'Referer': 'https://item.jd.com/{}.html'.format(skuId),
+            'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8',
+            'Accept': 'application/json, text/plain, */*',
+            'Accept-Language': 'zh-CN,zh;q=0.9,en;q=0.8',
+            'Accept-Encoding': 'gzip, deflate, br',
+            'Origin': 'https://item.jd.com',
+        }
+        
+        # 先尝试简化版本，如果403则说明需要h5st签名
+        try:
+            # 使用POST方法发送请求
+            resp = self.sess.post(url=url, data=payload, headers=headers)
+            if resp.status_code == 403:
+                print("⚠️ 新接口需要h5st签名参数，当前无法绕过")
+                print("💡 建议: 使用浏览器F12获取完整请求参数，或寻找其他接口")
+                
+                # 尝试备用方案：回退到简化的GET请求
+                print("🔄 尝试备用方案...")
+                fallback_url = 'https://item-soa.jd.com/getWareBusiness'
+                fallback_payload = {
+                    'skuId': skuId,
+                    'area': areaId,
+                    'num': skuNum
+                }
+                fallback_headers = {
+                    'User-Agent': self.userAgent,
+                    'Referer': 'https://item.jd.com/{}.html'.format(skuId),
+                }
+                resp = self.sess.get(url=fallback_url, params=fallback_payload, headers=fallback_headers)
+                print(f"备用接口状态码: {resp.status_code}")
+            
+            return resp
+            
+        except Exception as e:
+            print(f"接口请求异常: {str(e)}")
+            return None
 
     def fetchItemDetail(self, skuId):
         """ 解析商品信息
         :param skuId
         """
-        resp = self.getItemDetail(skuId).json()
-        shopId = resp['shopInfo']['shop']['shopId']
+        resp = self.getItemDetail(skuId)
+        print(f"商品详情接口状态码: {resp.status_code}")
+        print(f"商品详情接口URL: {resp.url}")
+        print(f"响应头Content-Type: {resp.headers.get('Content-Type', 'Unknown')}")
+        
+        if not self.respStatus(resp):
+            raise Exception('获取商品详情失败，状态码：{}'.format(resp.status_code))
+        
+        print("响应内容前1000字符：", resp.text[:1000])  # 增加调试输出
+        
+        try:
+            respJson = resp.json()
+        except Exception as e:
+            print("完整响应内容：", resp.text)  # 打印完整响应用于分析
+            raise Exception('商品详情响应不是有效JSON格式：{}'.format(str(e)))
+        
+        if 'shopInfo' not in respJson or 'shop' not in respJson['shopInfo']:
+            raise Exception('商品详情响应格式异常，缺少shopInfo信息')
+            
+        shopId = respJson['shopInfo']['shop']['shopId']
         detail = dict(venderId=shopId)
-        if 'YuShouInfo' in resp:
-            detail['yushouUrl'] = resp['YuShouInfo']['url']
-        if 'miaoshaInfo' in resp:
-            detail['startTime'] = resp['miaoshaInfo']['startTime']
-            detail['endTime'] = resp['miaoshaInfo']['endTime']
+        if 'YuShouInfo' in respJson:
+            detail['yushouUrl'] = respJson['YuShouInfo']['url']
+        if 'miaoshaInfo' in respJson:
+            detail['startTime'] = respJson['miaoshaInfo']['startTime']
+            detail['endTime'] = respJson['miaoshaInfo']['endTime']
         self.itemDetails[skuId] = detail
 
     ############## 库存方法 #############
@@ -184,8 +261,16 @@ class Session(object):
         :param areadId: 地区id
         :return: 商品是否有货 True/False
         """
-        resp = self.getItemDetail(skuId, skuNum, areaId).json()
-        return 'stockInfo' in resp and resp['stockInfo']['isStock']
+        resp = self.getItemDetail(skuId, skuNum, areaId)
+        if not self.respStatus(resp):
+            return False
+        try:
+            respJson = resp.json()
+            # 新接口返回结构：stockInfo.isStock
+            return 'stockInfo' in respJson and respJson['stockInfo'].get('isStock', False)
+        except Exception as e:
+            print("库存查询响应异常：", resp.text[:200])
+            return False
 
     ############## 购物车相关 #############
 

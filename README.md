@@ -106,7 +106,109 @@ python JdBuyer.py
 
 [B站传送门，记得一键三连哦！](https://www.bilibili.com/video/BV1pe4y1e7ty)
 
-## 3 Todo
+## 3 接口文档
+
+### 3.1 登录认证相关接口
+
+#### 二维码登录流程
+- **获取登录页面**
+  - URL: `https://passport.jd.com/new/login.aspx`
+  - 用途: 获取京东登录页面，建立初始会话
+
+- **获取二维码**
+  - URL: `https://qr.m.jd.com/show`
+  - 参数: 
+    - `appid`: 133 (应用ID)
+    - `size`: 147 (二维码尺寸)
+    - `t`: 实时时间戳 (毫秒级时间戳，防止缓存)
+  - 用途: 获取登录二维码图片，用于用户扫码登录
+
+- **检查二维码状态**
+  - URL: `https://qr.m.jd.com/check`
+  - 用途: 轮询检查二维码扫描状态，获取ticket
+
+- **验证登录凭证**
+  - URL: `https://passport.jd.com/uc/qrCodeTicketValidation`
+  - 用途: 验证ticket有效性，完成登录认证
+
+#### 登录状态验证
+- **验证登录状态**
+  - URL: `https://order.jd.com/center/list.action`
+  - 用途: 通过访问订单中心验证cookie是否有效，判断登录状态
+
+### 3.2 商品信息相关接口
+
+- **获取商品详情和库存** ⚠️ 
+  - URL: `https://api.m.jd.com/`
+  - 方法: POST
+  - 参数:
+    - `appid`: pc-item-soa
+    - `functionId`: pc_detailpage_wareBusiness  
+    - `client`: pc
+    - `clientVersion`: 1.0.0
+    - `t`: 时间戳
+    - `body`: JSON字符串包含skuId、area、num等
+    - `loginType`: 3
+  - 用途: 获取商品详细信息（店铺ID、价格、库存状态）
+  - **核心功能**: 查询商品库存状态（`stockInfo.isStock`）
+  - **返回结构**: 
+    - `stockInfo.isStock`: 库存状态
+    - `price.p`: 当前价格
+    - `wareInfo`: 商品信息
+    - `itemShopInfo`: 店铺信息
+
+### 3.3 购物车操作接口
+
+所有购物车接口基础URL: `https://api.m.jd.com/api`
+
+- **清空购物车选中商品**
+  - functionId: `pcCart_jc_cartUnCheckAll`
+  - 用途: 取消购物车中所有商品的选中状态
+
+- **添加商品到购物车**
+  - functionId: `pcCart_jc_cartAdd`
+  - 用途: 将指定商品添加到购物车
+
+- **修改购物车商品数量**
+  - functionId: `pcCart_jc_changeSkuNum`
+  - 用途: 修改购物车中已有商品的数量
+
+### 3.4 订单结算相关接口
+
+- **普通商品结算页面**
+  - URL: `http://trade.jd.com/shopping/order/getOrderInfo.action`
+  - 用途: 获取订单结算页面信息，提取风控参数（eid、fp、riskControl、trackId）
+
+- **预售商品结算页面**
+  - URL: `https://cart.jd.com/cart/dynamic/gateForSubFlow.action`
+  - 用途: 处理预售商品的结算页面，获取预售商品的风控参数
+
+### 3.5 订单提交接口
+
+- **提交订单**
+  - URL: `https://trade.jd.com/shopping/order/submitOrder.action`
+  - 用途: 提交订单完成购买
+  - **核心功能**: 携带风控参数、支付密码等信息完成下单
+  - 支持: 预售商品定金支付
+
+### 3.6 其他接口
+
+- **保存发票信息**
+  - URL: `https://trade.jd.com/shopping/dynamic/invoice/saveInvoice.action`
+  - 用途: 当订单提交失败时，尝试切换为普通发票重新提交
+
+- **微信通知**
+  - URL: `https://sc.ftqq.com/{sckey}.send?text={message}&desp={desp}`
+  - 用途: 通过Server酱服务发送微信通知，告知用户下单结果
+
+### 3.7 接口调用流程
+
+1. **登录流程**: 登录页面 → 获取二维码 → 检查扫描状态 → 验证登录
+2. **库存监控**: 持续调用商品详情接口检查库存状态
+3. **下单准备**: 清空购物车 → 添加商品 → 获取结算页面参数
+4. **订单提交**: 携带风控参数提交订单 → 失败重试 → 成功通知
+
+## 4 Todo
 - [x] 支持扫码登陆
 - [ ] 登陆状态保活
 - [x] 开发图形界面

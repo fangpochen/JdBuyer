@@ -1,0 +1,167 @@
+---
+description: 
+globs: 
+alwaysApply: false
+---
+# 京东抢购脚本专家指南
+
+## 项目概述
+这是一个京东自动抢购脚本项目，通过监控商品库存并自动下单来实现抢购功能。
+
+## ⚠️ 重要提示
+**当前项目接口可能已过时！** 京东平台会定期更新其API接口，包括：
+- 接口地址变更
+- 参数格式调整  
+- 新增验证机制
+- 反爬虫策略升级
+
+如果遇到以下问题，很可能是接口更新导致的：
+- JSON解析错误 (`JSONDecodeError`)
+- 接口返回HTML而非JSON
+- 商品详情获取失败
+- 登录状态验证失败
+- 下单接口调用异常
+
+**解决策略**：
+1. 使用浏览器开发者工具抓包分析新接口
+2. 对比旧接口与新接口的差异
+3. 更新接口地址、参数格式和请求头
+4. 适配新的反爬虫机制
+
+## 核心文件结构
+
+### 主要模块
+- [JdBuyer.py](mdc:JdBuyer.py) - 主程序入口，包含Buyer类和抢购逻辑
+- [JdSession.py](mdc:JdSession.py) - 核心会话管理，包含登录、商品查询、下单等所有接口调用
+- [utils.py](mdc:utils.py) - 工具函数集合，包含加密、图片处理、微信通知等
+- [config.py](mdc:config.py) - 配置文件管理器，读取config.ini配置
+- [timer.py](mdc:timer.py) - 定时执行功能，支持定时抢购
+- [log.py](mdc:log.py) - 日志系统配置
+- [exception.py](mdc:exception.py) - 自定义异常类
+
+### 配置文件
+- [config.ini](mdc:config.ini) - 主配置文件，包含微信通知等设置
+- [requirements.txt](mdc:requirements.txt) - Python依赖包列表
+
+## 核心功能模块
+
+### 1. 登录认证 (JdSession.py)
+- `getQRcode()` - 获取二维码
+- `getQRcodeTicket()` - 检查扫码状态
+- `validateQRcodeTicket()` - 验证登录
+- `_validateCookies()` - 验证cookie有效性
+- `saveCookies()` / `loadCookies()` - cookie持久化
+
+### 2. 商品监控 (JdSession.py)
+- `getItemDetail()` - 获取商品详情接口调用
+- `fetchItemDetail()` - 解析商品信息
+- `getItemStock()` - 检查库存状态（核心监控方法）
+
+### 3. 购物车管理 (JdSession.py)
+- `uncheckCartAll()` - 清空购物车选中
+- `addCartSku()` - 添加商品到购物车
+- `changeCartSkuCount()` - 修改商品数量
+- `prepareCart()` - 购物车准备流程
+
+### 4. 订单处理 (JdSession.py)
+- `getCheckoutPage()` - 获取结算页面（提取风控参数）
+- `getPreSallCheckoutPage()` - 预售商品结算
+- `submitOrder()` - 提交订单（核心下单方法）
+- `trySubmitOrder()` - 带重试的下单流程
+
+## 关键接口地址
+
+### 登录相关
+- 二维码获取: `https://qr.m.jd.com/show`
+- 扫码检查: `https://qr.m.jd.com/check`
+- 登录验证: `https://passport.jd.com/uc/qrCodeTicketValidation`
+
+### 商品相关
+- 商品详情/库存: `https://item-soa.jd.com/getWareBusiness`
+
+### 购物车相关
+- 购物车操作: `https://api.m.jd.com/api`
+
+### 订单相关
+- 结算页面: `http://trade.jd.com/shopping/order/getOrderInfo.action`
+- 订单提交: `https://trade.jd.com/shopping/order/submitOrder.action`
+
+## 技术要点
+
+### 反爬虫对策
+1. **Session管理**: 所有请求必须使用同一个session保持登录状态
+2. **请求头伪装**: 模拟真实浏览器User-Agent和Referer
+3. **风控参数**: 下单必须携带eid、fp、riskControl、trackId等参数
+4. **时间间隔**: 请求间隔不宜过短，避免触发风控
+
+### 错误处理原则
+1. **网络异常**: 捕获requests异常，支持重试
+2. **JSON解析**: 检查响应格式，打印调试信息
+3. **业务异常**: 根据接口返回的错误码进行相应处理
+4. **登录失效**: 自动检测并重新登录
+
+### 开发最佳实践
+1. **日志记录**: 使用log.py记录关键操作和错误信息
+2. **配置管理**: 敏感信息放在config.ini中
+3. **异常处理**: 使用exception.py中的自定义异常
+4. **代码复用**: 通用功能放在utils.py中
+
+## 常见问题解决
+
+### 接口调用失败 🔥
+**首要排查**: 京东接口是否已更新！
+1. 使用浏览器F12抓包，对比实际接口与代码中的接口
+2. 检查接口返回格式是否发生变化
+3. 验证请求参数是否需要新增或调整
+4. 确认反爬虫机制是否有新要求
+
+**其他排查项**:
+1. 检查是否使用了self.sess而不是requests
+2. 确认请求头是否完整
+3. 验证登录状态是否有效
+4. 检查商品ID和地区ID是否正确
+
+### 下单失败
+1. 确认风控参数是否正确获取
+2. 检查商品是否有库存
+3. 验证地址信息是否完整
+4. 确认支付密码格式是否正确
+
+### 监控不生效
+1. 检查库存查询间隔设置
+2. 验证商品SKU是否正确
+3. 确认地区ID是否匹配配送范围
+
+## 代码修改指导
+
+### 更新过时接口 🚨
+**优先级最高**: 修复因京东接口更新导致的失效问题
+1. 使用浏览器抓包工具分析新接口
+2. 更新接口地址和参数格式
+3. 适配新的请求头和验证机制
+4. 测试验证接口功能正常
+
+### 添加新接口
+1. 在JdSession.py中添加新方法
+2. 保持一致的错误处理模式
+3. 使用self.sess发起请求
+4. 添加适当的请求头
+
+### 优化性能
+1. 减少不必要的接口调用
+2. 合理设置请求间隔
+3. 优化JSON解析逻辑
+4. 使用异步处理提高并发
+
+### 增强稳定性
+1. 增加重试机制
+2. 完善异常处理
+3. 添加日志记录
+4. 监控接口变化
+
+你作为爬虫高手，应该重点关注接口稳定性、反爬虫对策和用户体验优化。
+
+
+
+
+

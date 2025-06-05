@@ -1,0 +1,363 @@
+URL: https://www.jd.com/error2.aspx
+Status: 200
+Headers: {'Server': 'nginx', 'Date': 'Thu, 05 Jun 2025 13:07:14 GMT', 'Content-Type': 'text/html', 'Content-Length': '22755', 'Last-Modified': 'Wed, 08 Jan 2025 02:14:04 GMT', 'Connection': 'keep-alive', 'ETag': '"677ddf6c-58e3"', 'Timing-Allow-Origin': '*', 'X-Trace': '200-1749128834629-0-0-0-0-0', 'Strict-Transport-Security': 'max-age=3600', 'Accept-Ranges': 'bytes'}
+Content:
+
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <meta name="format-detection" content="telephone=no" />
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <title>æ¨æè®¿é®çé¡µé¢ä¸å­å¨</title>
+    <link rel="shortcut icon" href="//www.jd.com/favicon.ico"/>
+        <link rel="icon" href="//www.jd.com/favicon.ico"/>
+    <link type="text/css" rel="stylesheet" href="//misc.360buyimg.com/??jdf/1.0.0/unit/ui-base/5.0.0/ui-base.css,jdf/1.0.0/unit/shortcut/5.0.0/shortcut.css,jdf/1.0.0/unit/global-header/5.0.0/global-header.css,jdf/1.0.0/unit/myjd/5.0.0/myjd.css,jdf/1.0.0/unit/nav/5.0.0/nav.css,jdf/1.0.0/unit/shoppingcart/5.0.0/shoppingcart.css,jdf/1.0.0/unit/global-footer/5.0.0/global-footer.css,jdf/1.0.0/unit/service/5.0.0/service.css,jdf/1.0.0/unit/basePatch/1.0.0/basePatch.css,jdf/1.0.0/unit/global-header-photo/5.0.0/global-header-photo.css,product/global/1.0.0/css/basePath.css">
+        <link type="text/css" rel="stylesheet"  href="//misc.360buyimg.com/product/error/1.0.0/css/error.reco.css" source="combo"/>
+        <script type="text/javascript" src="//misc.360buyimg.com/??jdf/lib/jquery-1.6.4.js,jdf/1.0.0/unit/base/5.0.0/base.js"></script>
+        <link type="text/css" rel="stylesheet" href="//misc.360buyimg.com/mall/globalError/1.0.0/widget/??content/content.css" source="widget">
+</head>
+
+<body>
+<!--shortcut start-->
+<div id="shortcut-2014">
+        <div class="w">
+        <ul class="fl">
+                <li id="ttbar-home"><i class="iconfont">&#xe608;</i><a href="//www.jd.com/" target="_blank">äº¬ä¸é¦é¡µ</a></li>
+                <li class="dorpdown" id="ttbar-mycity"></li>
+        </ul>
+        <ul class="fr">
+                        <li class="fore1" id="ttbar-login">
+                                <a href="javascript:login();" class="link-login">ä½ å¥½ï¼è¯·ç»å½</a>&nbsp;&nbsp;<a href="javascript:regist();" class="link-regist style-red">åè´¹æ³¨å</a>
+                        </li>
+                        <li class="spacer"></li>
+                        <li class="fore2">
+                                <div class="dt">
+                                        <a target="_blank" href="//order.jd.com/center/list.action">æçè®¢å</a>
+                                </div>
+                        </li>
+                        <li class="spacer"></li>
+                        <li class="fore3 dorpdown" id="ttbar-myjd">
+                                <div class="dt cw-icon">
+                                        <!-- <i class="ci-right"><s>â</s></i> -->
+                                        <a target="_blank" href="//home.jd.com/">æçäº¬ä¸</a><i class="iconfont">&#xe605;</i>
+                                </div>
+                                <div class="dd dorpdown-layer"></div>
+                        </li>
+                        <li class="spacer"></li>
+                        <li class="fore4" id="ttbar-member">
+                                <div class="dt">
+                                        <a target="_blank" href="//vip.jd.com/">äº¬ä¸ä¼å</a>
+                                </div>
+                        </li>
+                        <li class="spacer"></li>
+                        <li class="fore5"   id="ttbar-ent">
+                                <div class="dt">
+                                        <a target="_blank" href="//b.jd.com/">ä¼ä¸éè´­</a>
+                                </div>
+                        </li>
+                        <li class="spacer"></li>
+                        <li class="fore6 dorpdown" id="ttbar-serv">
+                                <div class="dt cw-icon">
+                                        <!-- <i class="ci-right"><s>â</s></i> -->
+                                        å®¢æ·æå¡<i class="iconfont">&#xe605;</i>
+                                </div>
+                                <div class="dd dorpdown-layer"></div>
+                        </li>
+                        <li class="spacer"></li>
+                        <li class="fore7 dorpdown" id="ttbar-navs">
+                                <div class="dt cw-icon">
+                                        <!-- <i class="ci-right"><s>â</s></i> -->
+                                        ç½ç«å¯¼èª<i class="iconfont">&#xe605;</i>
+                                </div>
+                                <div class="dd dorpdown-layer"></div>
+                        </li>
+                        <li class="spacer"></li>
+                        <li class="fore8 dorpdown" id="ttbar-apps">
+                                <div class="dt cw-icon">
+                                        <!-- <i class="ci-left"></i> -->
+                                        <!-- <i class="ci-right"><s>â</s></i> -->
+                                        <a target="_blank" href="//app.jd.com/">ææºäº¬ä¸</a>
+                                </div>
+                        </li>
+        </ul>
+                <span class="clr"></span>
+    </div>
+</div>
+<div id="o-header-2013"><div id="header-2013" style="display:none;"></div></div>
+<!--shortcut end-->
+<div class="w">
+    <div id="logo-2014">
+        <a href="//www.jd.com/" class="logo">äº¬ä¸</a>
+    </div>
+    <div id="search-2014" >
+        <ul id="shelper" class="hide"></ul>
+        <div class="form">
+            <input type="text" onkeydown="javascript:if(event.keyCode==13) search('key');" autocomplete="off" id="key" accesskey="s" class="text" />
+            <button onclick="search('key');return false;" class="button cw-icon"><i></i>æç´¢</button>
+        </div>
+    </div>
+    <div id="settleup-2014" class="dorpdown">
+        <div class="cw-icon">
+            <i class="iconfont">&#xe607;</i>
+            <i class="iconfont arrow">&#xe601;</i>
+            <a target="_blank" href="//cart.jd.com/cart.action">æçè´­ç©è½¦</a>
+        </div>
+        <div class="dorpdown-layer">
+            <div class="spacer"></div>
+            <div id="settleup-content">
+                <span class="loading"></span>
+            </div>
+        </div>
+    </div>
+    <div id="hotwords"></div>
+    <span class="clr"></span>
+</div>
+<!--nav start-->
+<div id="nav-2014">
+    <div class="w">
+        <div class="w-spacer"></div>
+        <div id="categorys-2014" class="dorpdown"  data-type="default">
+            <div class="dt">
+                <a target="_blank" href="//www.jd.com/allSort.aspx">å¨é¨åååç±»</a>
+            </div>
+        </div>
+        <div id="navitems-2014">
+            <ul id="navitems-group1">
+                <li clstag="" id="nav-fashion" class="fore1">
+                    <a class="b" target="_blank" href="//channel.jd.com/fashion.html">äº¬ä¸æé¥°</a>
+                </li>
+                <li clstag="" id="nav-beauty" class="fore2">
+                    <a class="b" target="_blank" href="//channel.jd.com/beautysale.html">ç¾å¦é¦</a>
+                </li>
+                <li clstag="" id="nav-chaoshi" class="fore3">
+                    <a class="b" target="_blank" href="//channel.jd.com/chaoshi.html">è¶å¸</a>
+                </li>
+                <li clstag="" id="nav-fresh" class="fore4">
+                    <a class="b" target="_blank" href="//fresh.jd.com">çé²</a>
+                </li>
+            </ul>
+            <div class="spacer"></div>
+            <ul id="navitems-group2">
+                <li clstag="" id="nav-jdww" class="fore1">
+                    <a class="b" target="_blank" href="//www.jd.hk/">å¨çè´­</a>
+                </li>
+                <li clstag="" id="nav-red" class="fore2">
+                    <a class="b" target="_blank" href="//red.jd.com/">éªè´­</a>
+                </li>
+                <li clstag="" id="nav-auction" class="fore3">
+                    <a class="b" target="_blank" href="//paimai.jd.com/">æå</a>
+                </li>
+            </ul>
+            <div class="spacer"></div>
+            <ul id="navitems-group3">
+                <li clstag="" id="nav-jdjr" class="fore1">
+                    <a class="b" target="_blank" href="//jr.jd.com/">éè</a>
+                </li>
+            </ul>
+        </div>
+        <div id="treasure"></div>
+        <span class="clr"></span>
+    </div>
+</div>
+<!--nav end-->
+
+<div class="w">
+
+<!--  /widget/content/content.vm -->
+<div class="content">
+    <div class="content-l">
+        <a href="//try.jd.com" target="_blank" clstag="pageclick|keycount|201601058|1">
+            <img class="try-text" src="//static.360buyimg.com/devfe/error-new/1.0.0/css/i/try_03.png">
+            <img class="try-img" src="//static.360buyimg.com/devfe/error-new/1.0.0/css/i/try1_07.png">
+        </a>
+    </div>
+    <div class="content-m">
+        <img src="//static.360buyimg.com/devfe/error-new/1.0.0/css/i/yinying_06.png">
+    </div>
+    <div class="content-r">
+        <img class="error-img" src="//static.360buyimg.com/devfe/error-new/1.0.0/css/i/error_06.png">
+        <p>æ±æ­!&nbsp;&nbsp;æ¨è®¿é®çé¡µé¢<span>å¤±è</span>å¦...</p>
+        <span class="other">
+            æ¨å¯ä»¥éé&nbsp;&nbsp;:
+            <a class="a-l" href="//www.jd.com" target="_blank" clstag="pageclick|keycount|201601058|2">
+                äº¬ä¸é¦é¡µ
+            </a>
+            <a class="a-l" href="//try.jd.com" target="_blank" clstag="pageclick|keycount|201601058|3">
+                äº¬ä¸è¯ç¨
+            </a>
+            <a href="//vip.jd.com" target="_blank" clstag="pageclick|keycount|201601058|4">
+                äº¬ä¸ä¼å
+            </a>
+        </span>
+    </div>
+</div>
+<!--/ /widget/content/content.vm -->
+</div>
+
+
+<div class="w">
+    <div id="reco4u" class="m hide">
+        <div class="mt">
+            <h3>ä¸ºä½ æ¨è</h3>
+        </div>
+        <div class="mc">
+            <div class="loading-style1"><b></b>å è½½ä¸­ï¼è¯·ç¨å...</div>
+        </div>
+    </div><!-- reco4u -->
+</div>
+
+<!--service start-->
+<div id="service-2017">
+        <div class="w">
+                <ol class="slogen">
+                        <li class="item fore1">
+                                <i>å¤</i>åç±»é½å¨ï¼è½»æ¾è´­ç©
+                        </li>
+                        <li class="item fore2">
+                                <i>å¿«</i>å¤ä»ç´åï¼æééé
+                        </li>
+                        <li class="item fore3">
+                                <i>å¥½</i>æ­£åè¡è´§ï¼ç²¾è´æå¡
+                        </li>
+                        <li class="item fore4">
+                                <i>ç</i>å¤©å¤©ä½ä»·ï¼çéæ å¿§
+                        </li>
+                </ol>
+        </div>
+        <div class="jd-help">
+                <div class="w">
+                        <div class="wrap">
+                                <dl class="fore1">
+                                        <dt>è´­ç©æå</dt>
+                                        <dd><a rel="nofollow" target="_blank" href="//help.jd.com/user/issue/list-29.html">è´­ç©æµç¨</a></dd>
+                                        <dd><a rel="nofollow" target="_blank" href="//help.jd.com/user/issue/list-151.html">ä¼åä»ç»</a></dd>
+                                        <dd><a rel="nofollow" target="_blank" href="//help.jd.com/user/issue/list-297.html">çæ´»æè¡/å¢è´­</a></dd>
+                                        <dd><a rel="nofollow" target="_blank" href="//help.jd.com/user/issue.html">å¸¸è§é®é¢</a></dd>
+                                        <dd><a rel="nofollow" target="_blank" href="//help.jd.com/user/issue/list-136.html">å¤§å®¶çµ</a></dd>
+                                        <dd><a rel="nofollow" target="_blank" href="//help.jd.com/user/index.html">èç³»å®¢æ</a></dd>
+                                </dl>
+                                <dl class="fore2">
+                                        <dt>ééæ¹å¼</dt>
+                                        <dd><a rel="nofollow" target="_blank" href="//help.jd.com/user/issue/list-81-100.html">ä¸é¨èªæ</a></dd>
+                                        <dd><a rel="nofollow" target="_blank" href="//help.jd.com/user/issue/list-81.html">211éæ¶è¾¾</a></dd>
+                                        <dd><a rel="nofollow" target="_blank" href="//help.jd.com/user/issue/103-983.html">ééæå¡æ¥è¯¢</a></dd>
+                                        <dd><a rel="nofollow" target="_blank" href="//help.jd.com/user/issue/109-188.html">ééè´¹æ¶åæ å</a></dd>
+                                        <dd><a target="_blank" href="//help.joybuy.com/help/question-list-201.html">æµ·å¤éé</a></dd>
+                                </dl>
+                                <dl class="fore3">
+                                        <dt>æ¯ä»æ¹å¼</dt>
+                                        <dd><a rel="nofollow" target="_blank" href="//help.jd.com/user/issue/list-172.html">è´§å°ä»æ¬¾</a></dd>
+                                        <dd><a rel="nofollow" target="_blank" href="//help.jd.com/user/issue/list-173.html">å¨çº¿æ¯ä»</a></dd>
+                                        <dd><a rel="nofollow" target="_blank" href="//help.jd.com/user/issue/list-176.html">åæä»æ¬¾</a></dd>
+                                        <dd><a rel="nofollow" target="_blank" href="//help.jd.com/user/issue/list-174.html">é®å±æ±æ¬¾</a></dd>
+                                        <dd><a rel="nofollow" target="_blank" href="//help.jd.com/user/issue/list-175.html">å¬å¸è½¬è´¦</a></dd>
+                                </dl>
+                                <dl class="fore4">
+                                        <dt>å®åæå¡</dt>
+                                        <dd><a rel="nofollow" target="_blank" href="//help.jd.com/user/issue/321-981.html">å®åæ¿ç­</a></dd>
+                                        <dd><a rel="nofollow" target="_blank" href="//help.jd.com/user/issue/list-132.html">ä»·æ ¼ä¿æ¤</a></dd>
+                                        <dd><a rel="nofollow" target="_blank" href="//help.jd.com/user/issue/130-978.html">éæ¬¾è¯´æ</a></dd>
+                                        <dd><a rel="nofollow" target="_blank" href="//myjd.jd.com/repair/repairs.action">è¿ä¿®/éæ¢è´§</a></dd>
+                                        <dd><a rel="nofollow" target="_blank" href="//help.jd.com/user/issue/list-50.html">åæ¶è®¢å</a></dd>
+                                </dl>
+                                <dl class="fore5">
+                                        <dt>ç¹è²æå¡</dt>
+                                        <dd><a target="_blank" href="//help.jd.com/user/issue/list-133.html">å¤ºå®å²</a></dd>
+                                        <dd><a target="_blank" href="//help.jd.com/user/issue/list-134.html">DIYè£æº</a></dd>
+                                        <dd><a rel="nofollow" target="_blank" href="//fuwu.jd.com/">å»¶ä¿æå¡</a></dd>
+                                        <dd><a rel="nofollow" target="_blank" href="//o.jd.com/market/index.action">äº¬ä¸Eå¡</a></dd>
+                                        <dd><a rel="nofollow" target="_blank" href="//mobile.jd.com/">äº¬ä¸éä¿¡</a></dd>
+                                        <dd><a rel="nofollow" target="_blank" href="//s.jd.com/">äº¬ä¸JD+</a></dd>
+                                </dl>
+                                <span class="clr"></span>
+                        </div>
+                </div>
+        </div>
+</div>
+<!--service end-->
+<!--footer start-->
+<div id="footer-2017">
+        <div class="w">
+                <div class="copyright_links">
+                        <p>
+                                <a href="//about.jd.com" target="_blank">å³äºæä»¬</a><span class="copyright_split">|</span>
+                                <a href="//about.jd.com/contact/" target="_blank">èç³»æä»¬</a><span class="copyright_split">|</span>
+                                <a href="//help.jd.com/user/custom.html" target="_blank">èç³»å®¢æ</a><span class="copyright_split">|</span>
+                                <a href="//vc.jd.com/cooperation.html" target="_blank">åä½æå</a><span class="copyright_split">|</span>
+                                <a href="//helpcenter.jd.com/venderportal/index.html" target="_blank">åå®¶å¸®å©</a><span class="copyright_split">|</span>
+                                <a href="//jzt.jd.com" target="_blank">è¥éä¸­å¿</a><span class="copyright_split">|</span>
+                                <a href="//app.jd.com/" target="_blank">ææºäº¬ä¸</a><span class="copyright_split">|</span>
+                                <a href="//club.jd.com/links.aspx" target="_blank">åæé¾æ¥</a><span class="copyright_split">|</span>
+                                <a href="//media.jd.com/" target="_blank">éå®èç</a><span class="copyright_split">|</span>
+                                <a href="//club.jd.com/" target="_blank">äº¬ä¸ç¤¾åº</a><span class="copyright_split">|</span>
+                                <a href="//sale.jd.com/act/FTrWPesiDhXt5M6.html" target="_blank">é£é©çæµ</a><span class="copyright_split">|</span>
+                                <a href="//about.jd.com/privacy/" target="_blank">éç§æ¿ç­</a><span class="copyright_split">|</span>
+                                <a href="//gongyi.jd.com" target="_blank">äº¬ä¸å¬ç</a><span class="copyright_split">|</span>
+                                <a href="//en.jd.com/" target="_blank">English Site</a><span class="copyright_split">|</span>
+                                <a href="//en.jd.com/help/question-58.html" target="_blank">Contact Us</a>
+                        </p>
+                </div>
+                <div class="copyright_info">
+                        <p>
+                                <a href="https://www.beian.gov.cn/portal/registerSystemInfo?recordcode=11000002000088" target="_blank">äº¬å¬ç½å®å¤ 11000002000088å·</a><span class="copyright_split">|</span><span>äº¬ICPè¯070359å·</span><span class="copyright_split">|</span>
+                                <a
+                                 href="//pro.jd.com/mall/active/2zRnBcZVhdAcWBMvBnoRcUdi3HBt/index.html" target="_blank">è¯åå»çå¨æ¢°ç½ç»ä¿¡æ¯æå¡å¤æ¡</a><span class="copyright_split">|</span><span>æ°åºåäº¬é¶&nbsp;å­ç¬¬å¤§120007å·</span></p>
+                        <p><span>äºèç½åºçè®¸å¯è¯ç¼å·æ°åºç½è¯(äº¬)å­150å·</span><span class="copyright_split">|</span>
+                                <a href="//pro.jd.com/mall/active/3bVDLXHdwVmdQksGF8TtS7ocq1NY/index.html"
+                                 target="_blank">åºçç©ç»è¥è®¸å¯è¯</a><span class="copyright_split">|</span>
+                                <a href="//img10.360buyimg.com/ling/jfs/t1/164806/19/5070/567736/6017d6d6Eab06ec9c/d8ca6e029f495447.jpg" target="_blank">ç½ç»æåç»è¥è®¸å¯è¯äº¬ç½æ[2020]6112-1201å·</a><span class="copyright_split">|</span><span>è¿æ³åä¸è¯ä¿¡æ¯ä¸¾æ¥çµè¯ï¼4006561155</span></p>
+                        <p><span class="copyright_text">Copyright&nbsp;&copy;&nbsp;2004&nbsp;-&nbsp;<em id="copyright_year">2018</em>&nbsp;&nbsp;äº¬ä¸JD.com&nbsp;çæææ</span><span class="copyright_split">|</span><span>æ¶è´¹èç»´æç­çº¿ï¼4006067733</span>
+                                <a
+                                 href="//sale.jd.com/act/7Y0Rp81MwQqc.html" target="_blank" class="copyright_license">ç»è¥è¯ç§</a>
+                        </p>
+                        <p><span>äº¬ä¸æä¸ç½ç«ï¼</span>
+                                <a href="https://www.jdpay.com/" target="_blank">äº¬ä¸é±å</a><span class="copyright_split">|</span>
+                                <a href="https://www.jcloud.com" target="_blank">äº¬ä¸äº</a>
+                        </p>
+                </div>
+                <p class="copyright_auth">
+                        <a class="copyright_auth_ico copyright_auth_ico_1" href="https://www.hd315.gov.cn/beian/view.asp?bianhao=010202007080200026"
+                         target="_blank">ç»è¥æ§ç½ç«å¤æ¡ä¸­å¿</a>
+                        <script type="text/JavaScript">function CNNIC_change(eleId){var str= document.getElementById(eleId).href;var str1 =str.substring(0,(str.length-6));str1+=CNNIC_RndNum(6);
+                                document.getElementById(eleId).href=str1;}function CNNIC_RndNum(k){var rnd=""; for (var i=0;i
+                                < k;i++) rnd+=Math.floor(Math.random()*10);
+                                 return rnd;};(function(){var d=new Date;document.getElementById( "copyright_year").innerHTML=d.getFullYear()})();</script>
+                                        <a id="urlknet" class="copyright_auth_ico copyright_auth_ico_2" onclick="CNNIC_change('urlknet')" oncontextmenu="return false;"
+                                         name="CNNIC_seal" href="https://ss.knet.cn/verifyseal.dll?sn=2008070300100000031&ct=df&pa=294005" target="_blank">å¯ä¿¡ç½ç«ä¿¡ç¨è¯ä¼°</a>
+                                        <a class="copyright_auth_ico copyright_auth_ico_3" href="https://www.cyberpolice.cn/" target="_blank">ç½ç»è­¦å¯æéä½ </a>
+                                        <a class="copyright_auth_ico copyright_auth_ico_4" href="https://search.szfw.org/cert/l/CX20120111001803001836"
+                                         target="_blank">è¯ä¿¡ç½ç«</a>
+                                        <a class="copyright_auth_ico copyright_auth_ico_5" href="https://www.12377.cn" target="_blank">ä¸­å½äºèç½ä¸¾æ¥ä¸­å¿</a>
+                                        <a class="copyright_auth_ico copyright_auth_ico_6" href="http://www.12377.cn/node_548446.htm" target="_blank">ç½ç»ä¸¾æ¥APPä¸è½½</a>
+                </p>
+        </div>
+</div>
+<!--footer end-->
+<script type="text/javascript" src="//wl.jd.com/wl.js"></script>
+<script>
+    seajs.config({
+        charset:'utf-8'
+    });
+    seajs.config({
+            paths: {
+                'MISC': '//misc.360buyimg.com',
+                'APP_ROOT': '//static.360buyimg.com/devfe/error-new/1.0.0',
+                'WDG_ROO': '//static.360buyimg.com/devfe/error-new/1.0.0/widget',
+                'JDF_UI': '//misc.360buyimg.com/jdf/1.0.0/ui',
+                'JDF_UNIT': '//misc.360buyimg.com/jdf/1.0.0/unit'
+            }
+        });
+        seajs.use(['jdf/1.0.0/unit/globalInit/5.0.0/globalInit',
+        'jdf/1.0.0/unit/hotwords/5.0.0/hotwords'], function (globalInit, hotwords) {
+        globalInit();
+        hotwords();
+        });
+    seajs.use('//misc.360buyimg.com/mall/globalError/1.0.0/js/error.reco', function(errorReco) {
+        errorReco();
+    });
+</script>
+
+</body>
+</html>

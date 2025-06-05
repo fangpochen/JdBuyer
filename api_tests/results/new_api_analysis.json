@@ -1,0 +1,58 @@
+{
+  "interface_analysis": "新版商品详情接口分析",
+  "timestamp": "2025-06-05 21:14:07",
+  "url_params": {
+    "appid": "pc-item-soa",
+    "functionId": "pc_detailpage_wareBusiness",
+    "client": "pc",
+    "clientVersion": "1.0.0",
+    "t": "1749128085783",
+    "body": "{\"skuId\":10122586394356,\"cat\":\"6233,6264,21638\",\"area\":\"16_1303_3483_59783\",\"shopId\":\"10179889\",\"venderId\":10315111,\"paramJson\":\"{\\\"platform2\\\":\\\"1\\\",\\\"colType\\\":100,\\\"specialAttrStr\\\":\\\"p0ppppppppp2pppppppppppppppp\\\",\\\"skuMarkStr\\\":\\\"00\\\"}\",\"num\":1,\"bbTraffic\":\"\",\"canvasType\":1,\"giftServiceIsSelected\":\"\",\"customInfoId\":\"0\"}",
+    "h5st": "20250605205450817;aazd9wgdi02w20m2;fb5df;tk03w874f1bcd18nvLDMgbZRGl2FWPFNCI3nJFi2it3Z1OvpLBVX92D4ahKyDwtJrCeLCoSNqvDYh8zCmPAqRFeGsOZX;a49d083be07040c0479d7904c6f4ea39ab39a96b80b425afdaf16c45aa334479;5.1;1749128085817;ri_uxFOm22ciAuLmOGLm9aHWMusmk_Mm86oi8SHi_KoVHRXgKFXWNlsm0msSIlsmOGuj6mrm0mMTLhImOuMsCmcWLpbh3urV_KbV1moi6abW8WbhMJLh3WoV4OLh7Sbh2msm0msSo94VMZ4RMusmk_MmJVIVLRrhMhbV5qoh9WLh7aLV7qbg8aIW8i7h5a7iJhLmOGLm7pIRAp4WMusmk_siOGLm6aHWMusmk_Mm52ciAaLRPZoTFV4X5OImOGLm4lsmOGujMaZYelIi7GIU3msm0mcT-dITNlHmOuMsCmMi72YUXlsm0mMV_lsmOGujxtsmkirm0mci9aHWMusmOuMsCqbiOGLm_qbRMlsmOusmk_sgBuMgMmbi5lImOusmOGujMmJcbJ6Tfx5W76IhBmsm0mcT-dITNlHmOusmOGuj_uMgMObRMlsmOusmk_siOGLm3aHWMusmOuMsCKLiOGLm4aHWMusmOuMsCurm0mch5lImOusmOGuj_uMgMebRMlsmOusmk_Mi_qrm0m8i5lImOusmOGujMKLj92siMuMgMqbRMlsmOusmk_siOGLmDRHmOusmOGuj5uMgMinTMusmOuMsCurm0msTMusmOuMsCurm0msV3lsmOusmkCnm0msVAZoR2ZImOuMsC6nmOGOmbIF1sAG1GIF16s01MuMgMmrSMusmOuMsztMgMunSMusmk_Mm6WrQOCrh42YUXt8g_2si9usZgt8S3xoVAJ4ZMuMgMqYR7lsmOG_Q;a52ca00da5bb04423076fe1971fc3b4177cbd7b9d4dbd2f805cc4afcaed183d6;tenjKJKT-JoRL1YRI9MT-J4S8ZIZ61YVF94WCeHTJJoTL9cQKxIWCeYU_tXW",
+    "x-api-eid-token": "jdd03WFLCZKZUHSR5PPN3K4I4MAICNBVC3XY7PMUUHFRW6HDDMQ72G7O22T3TJJYPDSBAAOMOI52SSPZWIUVNAOWUDPHOTIAAAAMXIAUFL2IAAAAACHPSIZNFAPSOBYX",
+    "loginType": "3",
+    "scval": "10122586394356",
+    "uuid": "181111935.17490280250701527595118.1749028025.1749119733.1749126886.6"
+  },
+  "simple_request": {
+    "status_code": 403,
+    "content_type": "Unknown",
+    "response_size": 0,
+    "success": false,
+    "headers": {
+      "Date": "Thu, 05 Jun 2025 13:14:08 GMT",
+      "Content-Length": "0",
+      "Connection": "keep-alive",
+      "X-API-Request-Id": "10191071152-148623-1749129248548",
+      "X-Rp-Sdtoken": "set;1800;AAbEsBpEIOVjqTAKCQtvQu17JmGfGuySGaaiMBd0jh7x-DLyMlmVSSpA9yLcfncGIL8dJ_o80gKjeC_1vi9q9ntpN-miKHhBojAst7_Q0sYrD84aS3AmjrZQqA",
+      "Server": "jfe"
+    },
+    "response_text": "",
+    "response_full": ""
+  },
+  "original_request": {
+    "status_code": 403,
+    "content_type": "Unknown",
+    "response_size": 0,
+    "success": false,
+    "headers": {
+      "Date": "Thu, 05 Jun 2025 13:14:08 GMT",
+      "Content-Length": "0",
+      "Connection": "keep-alive",
+      "X-API-Request-Id": "10192121639-100961-1749129248819",
+      "X-Rp-Sdtoken": "set;1800;AAbEsBpEIOVjqTAKCQtvQu17bfmpxcqnmHRAq0eELd3U7YCuATGVxLVzkqCvskQ9fXbMSUdNxk_Kv4iCXQp8IR2sRca9OtgQPfIliAL-eIbBYcjc22ZEAQUBFQ",
+      "Server": "jfe"
+    },
+    "response_text": "",
+    "response_full": ""
+  },
+  "conclusion": {
+    "requires_encryption": true,
+    "key_params": [
+      "h5st",
+      "x-api-eid-token",
+      "uuid"
+    ],
+    "next_steps": "需要JS逆向分析h5st生成算法"
+  }
+}

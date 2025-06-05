@@ -1,0 +1,17 @@
+{
+  "interface": "获取商品详情",
+  "url": "https://item-soa.jd.com/getWareBusiness",
+  "method": "GET",
+  "parameters": {
+    "skuId": "100015253059",
+    "area": "1_2901_55554_0",
+    "num": 1
+  },
+  "success": false,
+  "status_code": 200,
+  "content_type": "text/html",
+  "response_size": 22755,
+  "response_preview": "\n<!DOCTYPE HTML>\n<html>\n<head>\n    <meta name=\"format-detection\" content=\"telephone=no\" />\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no\" />\n    <meta name=\"format-detection\" content=\"telephone=no\" />\n    <meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\" />\n    <title>æ¨æè®¿é®çé¡µé¢ä¸å­å¨</title>\n    <link rel=\"shortcut icon\" href=\"//www.jd.com/favicon.ico\"/>\n        <link rel=\"icon\" href=\"//www.jd.com/favicon.ico\"/>\n    <link type=\"text/css\" rel=\"stylesheet\" href=\"//misc.360buyimg.com/??jdf/1.0.0/unit/ui-base/5.0.0/ui-base.css,jdf/1.0.0/unit/shortcut/5.0.0/shortcut.css,jdf/1.0.0/unit/global-header/5.0.0/global-header.css,jdf/1.0.0/unit/myjd/5.0.0/myjd.css,jdf/1.0.0/unit/nav/5.0.0/nav.css,jdf/1.0.0/unit/shoppingcart/5.0.0/shoppingcart.css,jdf/1.0.0/unit/global-footer/5.0.0/global-footer.css,jdf/1.0.0/unit/service/5.0.0/service.css,jdf/1.0.0/unit/basePatch/1.0.0/basePatch.css,jd",
+  "is_json": false,
+  "timestamp": "当前时间"
+}

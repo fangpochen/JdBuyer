@@ -1,0 +1,10 @@
+{
+  "interface": "获取登录页面",
+  "url": "https://passport.jd.com/new/login.aspx",
+  "method": "GET",
+  "status_code": 200,
+  "success": true,
+  "content_type": "text/html;charset=GBK",
+  "response_size": 29870,
+  "timestamp": "N/A"
+}

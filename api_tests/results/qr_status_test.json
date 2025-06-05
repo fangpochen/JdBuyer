@@ -1,0 +1,16 @@
+{
+  "interface": "检查二维码状态",
+  "url": "https://qr.m.jd.com/check",
+  "method": "GET",
+  "parameters": {
+    "appid": "133",
+    "callback": "jQuery随机数",
+    "token": "wlfstk_smdl值",
+    "_": "时间戳"
+  },
+  "success": true,
+  "ticket": null,
+  "has_wlfstk_cookie": true,
+  "note": "未扫码时ticket为None是正常的",
+  "timestamp": "当前时间"
+}

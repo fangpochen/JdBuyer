@@ -1,0 +1,23 @@
+{
+  "name": "jdbuyer",
+  "version": "1.0.0",
+  "description": "<div id=\"top\"></div>",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/zas023/JdBuyer.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/zas023/JdBuyer/issues"
+  },
+  "homepage": "https://github.com/zas023/JdBuyer#readme",
+  "dependencies": {
+    "crypto-js": "^4.2.0"
+  }
+}
