@@ -18,6 +18,7 @@
   },
   "homepage": "https://github.com/zas023/JdBuyer#readme",
   "dependencies": {
-    "crypto-js": "^4.2.0"
+    "crypto-js": "^4.2.0",
+    "jsdom": "^26.1.0"
   }
 }

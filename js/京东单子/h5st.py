@@ -1,0 +1,117 @@
+import subprocess
+import os
+class MySubprocessPopen(subprocess.Popen):
+    def __init__(self, *args, **kwargs):
+        kwargs['encoding'] = 'UTF-8'
+        super().__init__(*args, **kwargs)
+subprocess.Popen = MySubprocessPopen
+os.environ['EXECJS_RUNTIME'] = 'Node'
+
+import execjs
+
+import hashlib
+import requests
+import json
+
+cookies = {
+    'shshshfpa': '3cc68f01-4b23-9d8d-80d8-0e3a733732b1-1729304238',
+    'shshshfpx': '3cc68f01-4b23-9d8d-80d8-0e3a733732b1-1729304238',
+    'jcap_dvzw_fp': 'mtD137xpv6UIwvuq0mXwE0wjT39A5VAXLSW1GX4rWcvCRO4HabxPrA4ZbnyoghNefmXpR35hPALvnLvh_jlqAw==',
+    'whwswswws': '',
+    'b_dpr': '1.25',
+    'b_webp': '1',
+    'b_avif': '1',
+    '_base_': 'YKH2KDFHMOZBLCUV7NSRBWQUJPBI7JIMU5R3EFJ5UDHJ5LCU7R2NILKK5UJ6GLA2RGYT464UKXAI5KK7PNC5B5UHJ2HVQ4ENFP57OC4YQS7CAWLG4C42V37XDAYBDZ76TCNE6YVKRXISUBSARQGSUO5TKLTPWA3DW2RLWZCSG4SOQWCP5WPWO6EFS7HEHMRWVKBRVHB33TFD4VYQVBI5WB7V2DUISMGX6BBWHPUCVDKDCZAFRATBBAOSGZUQRVKVOJX7RLRW37V6KA2D4ZKSH4RVPA6ZQKWEJYVXZAZKUA7IZVOHRK3JJ6IM5RL4QCMEPXZEXXW2LUHTO4LDI46FTXSY43QVVCPP7QXSUNA',
+    'b_dh': '689',
+    'autoOpenApp_downCloseDate_jd_homePage': '1746419772596_1',
+    'commonAddress': '0',
+    'regionAddress': '1%2C72%2C55674%2C0',
+    'b_dw': '1513',
+    'autoOpenApp_downCloseDate_auto': '1746666122253_1800000',
+    'autoOpenApp_downCloseDate_autoOpenApp_autoPromptly': '1746666278842_1',
+    'warehistory': '"100012988004,100012988004,100012988004,100012988004,10064755302637,10064755302637,10121010944153,10057702954383,10057702954383,10101352914789,10087902104657,10087902104657,10087902104657,"',
+    '__jdv': '209449046|direct|-|none|-|1748420273234',
+    'pt_st': '1_9JQ1i00kjh1YKYhTykte54NwqPhuMqFvOZhbB40ahZ817C80jF_0I5u25KnqwpEPqVua7jlz5KVrKhdp3kUaCJMWVOdkLpkTQE0VxXA8LOX-QyN7Mozcd6QJZjgvyME-AWJrNPfaGR99diR4abKNe3qZpV3Qo7Vnv3JXX6LoaVR1vUV25O4viYB--V**',
+    'PCSYCityID': 'CN_510000_510100_0',
+    'mt_xid': 'V2_52007VwMUV15dV14dTRhUBWcDGlRYWlpbHEoabFZiAUVQXQtXRkoaEV8ZYlFAUEELAl8YVR5UUTIDQVZdUQcOTXkaXQZjHxNVQVlXSx9NElwHbAYUYl9oUmobSBtZBWAHFVFbX2JfHkAf',
+    'mba_muid': '17424453509111974390222',
+    'areaId': '22',
+    'ipLoc-djd': '22-1930-50948-71603',
+    'logintype': 'wx',
+    'npin': 'jd_5f846335f2e20',
+    'jsavif': '1',
+    'x-rp-evtoken': 'mGW9U4qbzsaBdCMe70m9pOaeRn-OnuGCr0tkbMPxJ3qvzT1A1dOd3euWRoWltzUY1FY8G4L-T2JHL517YYMktg%3D%3D',
+    'mba_sid': '1749184619746714056501.2',
+    'wlfstk_smdl': 'b6nuoepypzy4rjuzs331c3eiq5hrr742',
+    '3AB9D23F7A4B3C9B': '6DTZX7CBH3GTNDGDN3MIPWVXORL7WR5XZXY3IV62A66CYOGS6T3FBFQIWNQYAY37WGHAVCVJTL56UXZOOSUNTZK4FQ',
+    'TrackID': '1AZc_hNFkGLDh6Qsrwx9Rb8NW-Q3RyqGjBjIPYZrX9BW7N517h3ZP9J33s8X99XbllW1HN1gV9DHmh8jxHAWIFaxOfSHW2OVKpGR9HAp0VzfWDXT1sdAszrrvXIBuxSfn',
+    'thor': '24B06D8149A8C15474114F9BF574B68613611BC23847087FCF88DF45D8E1628820F5CB701E2549FEB5B981DA78BAC666877C794E9E141C09053926435C9EE9E661FAD4C86F181C35B276CCE73E33EEC95EEED6B120DD33D55DED309269FC04ED05C557B072344DBB5DB7AE5488A86ABA446B2DA13E2DE0EAD4D4431122EE0D2B162795DF3442CEBEEC77BEF673F1EAD94CFD0EEA12EE17DC68A2110E7679D4D9',
+    'flash': '3_jjYfcZSFZgApXbvGa9bzSpqjUV_dquAehRD43PRMHMWh0gsbOqzjUmvsbHs-FuClnwj-c48v7D-iVJOWkGfA_oi65A7QkA3T2l2JI4d5CtnQ-mKYNt85g5ryPeBmeFfK1DM4b1Kb3673WF-7ALqp_wh_X9wBFgtuLQ0VuL3hws0V0_MwZXVD',
+    'light_key': 'AASBKE7rOxgWQziEhC_QY6yav5YYuTv_Dj-nJUChLo6mj9JHAOCuCUvwSUrtG-mkb1d1BMDf',
+    'pinId': 'O2Ywdx1kl2E3tEVdPtyxRg',
+    'pin': 'jd_MTUBZHCRNKpo',
+    'unick': 'jd_h61ihxy509sr69',
+    'ceshi3.com': '000',
+    '_tp': 'py9birr5ymhnKSmDaK0Tfg%3D%3D',
+    '_pst': 'jd_MTUBZHCRNKpo',
+    'token': '75a66f05083cfccd9c73cff72754fd39,3,971769',
+    '__jda': '181111935.17424453509111974390222.1742445351.1749021223.1749184619.46',
+    '__jdc': '181111935',
+    'cn': '0',
+    '3AB9D23F7A4B3CSS': 'jdd036DTZX7CBH3GTNDGDN3MIPWVXORL7WR5XZXY3IV62A66CYOGS6T3FBFQIWNQYAY37WGHAVCVJTL56UXZOOSUNTZK4FQAAAAMXIOGN4FYAAAAACJVXHNJLQZFMYMX',
+    '_gia_d': '1',
+    'shshshfpb': 'BApXSlniEQPJAMCERuWRzOTIRZ03I8YNrBmtxRRdm9xJ1Mj3PzYG2',
+    'sdtoken': 'AAbEsBpEIOVjqTAKCQtvQu17dMtznNbNdlGI4efpupO0Fvtbz_N9FhpsPkhKD4Df8aE2FcSMUzVhqCJLF0pc8OuE-kAR2Y4PYu-QgrW6qIqQ6WU38pgZBq__BIMDaQ',
+    '__jdb': '181111935.7.17424453509111974390222|46.1749184619',
+    '__jdu': '17424453509111974390222',
+}
+
+headers = {
+    'accept': 'application/json, text/javascript, */*; q=0.01',
+    'accept-language': 'zh-CN,zh;q=0.9,en;q=0.8,en-GB;q=0.7,en-US;q=0.6',
+    'cache-control': 'no-cache',
+    'origin': 'https://item.jd.com',
+    'pragma': 'no-cache',
+    'priority': 'u=1, i',
+    'referer': 'https://item.jd.com/',
+    'sec-ch-ua': '"Microsoft Edge";v="137", "Chromium";v="137", "Not/A)Brand";v="24"',
+    'sec-ch-ua-mobile': '?0',
+    'sec-ch-ua-platform': '"Windows"',
+    'sec-fetch-dest': 'empty',
+    'sec-fetch-mode': 'cors',
+    'sec-fetch-site': 'same-site',
+    'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/137.0.0.0 Safari/537.36 Edg/137.0.0.0',
+    'x-referer-page': 'https://item.jd.com/10122586394356.html',
+    'x-rp-client': 'h5_1.0.0',
+    # 'cookie': 'shshshfpa=3cc68f01-4b23-9d8d-80d8-0e3a733732b1-1729304238; shshshfpx=3cc68f01-4b23-9d8d-80d8-0e3a733732b1-1729304238; jcap_dvzw_fp=mtD137xpv6UIwvuq0mXwE0wjT39A5VAXLSW1GX4rWcvCRO4HabxPrA4ZbnyoghNefmXpR35hPALvnLvh_jlqAw==; whwswswws=; b_dpr=1.25; b_webp=1; b_avif=1; _base_=YKH2KDFHMOZBLCUV7NSRBWQUJPBI7JIMU5R3EFJ5UDHJ5LCU7R2NILKK5UJ6GLA2RGYT464UKXAI5KK7PNC5B5UHJ2HVQ4ENFP57OC4YQS7CAWLG4C42V37XDAYBDZ76TCNE6YVKRXISUBSARQGSUO5TKLTPWA3DW2RLWZCSG4SOQWCP5WPWO6EFS7HEHMRWVKBRVHB33TFD4VYQVBI5WB7V2DUISMGX6BBWHPUCVDKDCZAFRATBBAOSGZUQRVKVOJX7RLRW37V6KA2D4ZKSH4RVPA6ZQKWEJYVXZAZKUA7IZVOHRK3JJ6IM5RL4QCMEPXZEXXW2LUHTO4LDI46FTXSY43QVVCPP7QXSUNA; b_dh=689; autoOpenApp_downCloseDate_jd_homePage=1746419772596_1; commonAddress=0; regionAddress=1%2C72%2C55674%2C0; b_dw=1513; autoOpenApp_downCloseDate_auto=1746666122253_1800000; autoOpenApp_downCloseDate_autoOpenApp_autoPromptly=1746666278842_1; warehistory="100012988004,100012988004,100012988004,100012988004,10064755302637,10064755302637,10121010944153,10057702954383,10057702954383,10101352914789,10087902104657,10087902104657,10087902104657,"; __jdv=209449046|direct|-|none|-|1748420273234; pt_st=1_9JQ1i00kjh1YKYhTykte54NwqPhuMqFvOZhbB40ahZ817C80jF_0I5u25KnqwpEPqVua7jlz5KVrKhdp3kUaCJMWVOdkLpkTQE0VxXA8LOX-QyN7Mozcd6QJZjgvyME-AWJrNPfaGR99diR4abKNe3qZpV3Qo7Vnv3JXX6LoaVR1vUV25O4viYB--V**; PCSYCityID=CN_510000_510100_0; mt_xid=V2_52007VwMUV15dV14dTRhUBWcDGlRYWlpbHEoabFZiAUVQXQtXRkoaEV8ZYlFAUEELAl8YVR5UUTIDQVZdUQcOTXkaXQZjHxNVQVlXSx9NElwHbAYUYl9oUmobSBtZBWAHFVFbX2JfHkAf; mba_muid=17424453509111974390222; areaId=22; ipLoc-djd=22-1930-50948-71603; logintype=wx; npin=jd_5f846335f2e20; jsavif=1; x-rp-evtoken=mGW9U4qbzsaBdCMe70m9pOaeRn-OnuGCr0tkbMPxJ3qvzT1A1dOd3euWRoWltzUY1FY8G4L-T2JHL517YYMktg%3D%3D; mba_sid=1749184619746714056501.2; wlfstk_smdl=b6nuoepypzy4rjuzs331c3eiq5hrr742; 3AB9D23F7A4B3C9B=6DTZX7CBH3GTNDGDN3MIPWVXORL7WR5XZXY3IV62A66CYOGS6T3FBFQIWNQYAY37WGHAVCVJTL56UXZOOSUNTZK4FQ; TrackID=1AZc_hNFkGLDh6Qsrwx9Rb8NW-Q3RyqGjBjIPYZrX9BW7N517h3ZP9J33s8X99XbllW1HN1gV9DHmh8jxHAWIFaxOfSHW2OVKpGR9HAp0VzfWDXT1sdAszrrvXIBuxSfn; thor=24B06D8149A8C15474114F9BF574B68613611BC23847087FCF88DF45D8E1628820F5CB701E2549FEB5B981DA78BAC666877C794E9E141C09053926435C9EE9E661FAD4C86F181C35B276CCE73E33EEC95EEED6B120DD33D55DED309269FC04ED05C557B072344DBB5DB7AE5488A86ABA446B2DA13E2DE0EAD4D4431122EE0D2B162795DF3442CEBEEC77BEF673F1EAD94CFD0EEA12EE17DC68A2110E7679D4D9; flash=3_jjYfcZSFZgApXbvGa9bzSpqjUV_dquAehRD43PRMHMWh0gsbOqzjUmvsbHs-FuClnwj-c48v7D-iVJOWkGfA_oi65A7QkA3T2l2JI4d5CtnQ-mKYNt85g5ryPeBmeFfK1DM4b1Kb3673WF-7ALqp_wh_X9wBFgtuLQ0VuL3hws0V0_MwZXVD; light_key=AASBKE7rOxgWQziEhC_QY6yav5YYuTv_Dj-nJUChLo6mj9JHAOCuCUvwSUrtG-mkb1d1BMDf; pinId=O2Ywdx1kl2E3tEVdPtyxRg; pin=jd_MTUBZHCRNKpo; unick=jd_h61ihxy509sr69; ceshi3.com=000; _tp=py9birr5ymhnKSmDaK0Tfg%3D%3D; _pst=jd_MTUBZHCRNKpo; token=75a66f05083cfccd9c73cff72754fd39,3,971769; __jda=181111935.17424453509111974390222.1742445351.1749021223.1749184619.46; __jdc=181111935; cn=0; 3AB9D23F7A4B3CSS=jdd036DTZX7CBH3GTNDGDN3MIPWVXORL7WR5XZXY3IV62A66CYOGS6T3FBFQIWNQYAY37WGHAVCVJTL56UXZOOSUNTZK4FQAAAAMXIOGN4FYAAAAACJVXHNJLQZFMYMX; _gia_d=1; shshshfpb=BApXSlniEQPJAMCERuWRzOTIRZ03I8YNrBmtxRRdm9xJ1Mj3PzYG2; sdtoken=AAbEsBpEIOVjqTAKCQtvQu17dMtznNbNdlGI4efpupO0Fvtbz_N9FhpsPkhKD4Df8aE2FcSMUzVhqCJLF0pc8OuE-kAR2Y4PYu-QgrW6qIqQ6WU38pgZBq__BIMDaQ; __jdb=181111935.7.17424453509111974390222|46.1749184619; __jdu=17424453509111974390222',
+}
+
+
+def get_h5st(appid, functionId, time, body_str, useragen):
+    sha256_hash = hashlib.sha256()
+    sha256_hash.update(body_str.encode())
+    body = sha256_hash.hexdigest()
+    print('body=>',body)
+    h5st = execjs.compile(open('h5st.js', encoding='utf-8').read()).call('get_h5st', appid, functionId, time, body, useragen)
+    print('h5st=>', h5st)
+    return h5st
+
+params = {
+    'appid': 'pc-item-soa',
+    'functionId': 'pc_detailpage_wareBusiness',
+    'client': 'pc',
+    'clientVersion': '1.0.0',
+    't': '1749185574991',
+    'body': '{"skuId":10122586394356,"cat":"6233,6264,21638","area":"22_1930_50948_71603","shopId":"10179889","venderId":10315111,"paramJson":"{\\"platform2\\":\\"1\\",\\"colType\\":100,\\"specialAttrStr\\":\\"p0ppppppppp2pppppppppppppppp\\",\\"skuMarkStr\\":\\"00\\"}","num":1,"bbTraffic":"","canvasType":1,"giftServiceIsSelected":"","customInfoId":"0"}',
+    'h5st': '20250606125521796;dxig3wwzgqp3pjj6;fb5df;tk05w0b44371a41lMXgyeDErMWhSsmOhEFoS7uXSHF3R3h7VFNnVuueuXg6J9zRghJJUAxoU86qgW5aV9uLiNZYh6qog;148d59ca64c0ca7eaffcb078442699c3e26f9a26360d8dbb49900ff1802b5cd0;5.1;1749185720796;smePkmMhEFoS7uXSHF3R3h7VFNnVMuMgMuHVMusmk_sgOGLmAh4WMusmk_MmNpbg2iYhNd7h9iLW7KLW3KrV3qog1ObVNV4WIVIW8mImOGLm_VqTHlYV3lsmOGujMW4W3ibg9abW7mIWMtbVJtbh_mrh4eLh2qoV3S7hMV4iMuMgMiXW41YWLlsmOGuj96sm0msh5lImOuMsCmshAqLj5W3XJ9YUIxZhGlsm0mMRMusmk_MmWJZcpNJcZhLimN6Tslsm0mcT-dITNlHmOuMsCmMi72YUXlsm0mMV_lsmOGujxtsmkmrm0mci9aHWMusmOuMsCqbiOGLm_qbRMlsmOusmk_sgBuMgMmbi5lImOusmOGujMqnTUt3h8epV8mbZd5MmOGLmBxoVApISMusmOuMsCurm0msg5lImOusmOGuj_uMgMSbRMlsmOusmk_ch8uMgMWbRMlsmOusmk_siOGLm5aHWMusmOuMsCurm0msh5lImOusmOGuj8erm0m8i5lImOusmOGujMaLj92siMuMgMqbRMlsmOusmk_siOGLmDRHmOusmOGuj5uMgMinTMusmOuMsCurm0msTMusmOuMsCurm0msV3lsmOusmkCnm0msVAZoR2ZImOuMsC6nmOGOm-t3cgl5emFJeZdZbPdIUMuMgMmrSMusmOuMsztMgMunSMusmk_Mm6WrQOCrh42YUXt8g_2si9usZgt8S3xoVAJ4ZMuMgMqYR7lsmOG_Q;613feacc7c94ed9e7ca95ee5d0032dd42140d3dab00a16b68651bc1f8a2a3eeb;tenjKJKT-JoRL1YRI9MT-J4S8ZIZ61YVF94WCeHTJJoTL9cQKxIWCeYU_tXW',
+    'x-api-eid-token': 'jdd036DTZX7CBH3GTNDGDN3MIPWVXORL7WR5XZXY3IV62A66CYOGS6T3FBFQIWNQYAY37WGHAVCVJTL56UXZOOSUNTZK4FQAAAAMXIOKRXTAAAAAACIBBA5CBYT4BTQX',
+    'loginType': '3',
+    'scval': '10122586394356',
+    'uuid': '181111935.17424453509111974390222.1742445351.1749021223.1749184619.46',
+}
+body_str = json.dumps(json.loads(params['body']), separators=(',', ':'), ensure_ascii=False)
+h5st = get_h5st(params['appid'], params['functionId'], params['t'], body_str, headers['user-agent'])
+params['h5st'] = h5st
+
+response = requests.get('https://api.m.jd.com/', params=params, cookies=cookies, headers=headers)
+print(response.text)

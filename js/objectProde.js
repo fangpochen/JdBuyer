@@ -106,4 +106,4 @@ window.PSign = new ParamsSign({
 });
 
 h5stParames = window.PSign._$sdnmd(g)
-console.log(h5stParames)
+console.log('h5stParames:', h5stParames)
